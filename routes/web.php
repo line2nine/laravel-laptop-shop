@@ -17,11 +17,12 @@ Route::get('/', 'AdminController@showFormLogin')->name('form.login');
 
 Route::group(['prefix' => 'admin'], function ()
 {
-    Route::post('/dashboard', 'AdminController@showIndex')->name('admin.dashboard');
+    Route::get('/dashboard', 'AdminController@showIndex')->name('admin.dashboard');
+    Route::post('/dashboard', 'AdminController@login');
 });
 
-Route::group(['prefix' => 'customer'], function ()
+Route::group(['prefix' => 'user'], function ()
 {
-    Route::get('list', 'CustomerController@index')->name('customers.list');
+    Route::get('list', 'UserController@getAll')->name('user.list');
 });
 

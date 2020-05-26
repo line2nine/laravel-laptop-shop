@@ -16,12 +16,12 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    function index(Request $request)
+    function login(Request $request)
     {
         if ($request->username == 'admin' && $request->password == 'admin'){
             return redirect()->route('admin.dashboard');
         } else {
-            return redirect()->route('/');
+            return redirect()->route('form.login');
         }
     }
 }

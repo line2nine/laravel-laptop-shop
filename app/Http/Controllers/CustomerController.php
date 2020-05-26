@@ -8,6 +8,6 @@ class CustomerController extends Controller
 {
     function index()
     {
-        return view('customers.list');
+        return view('users.list');
     }
 }
