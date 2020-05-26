@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'AdminController@showFormLogin')->name('form.login');
+
+Route::group(['prefix' => 'admin'], function ()
+{
+    Route::post('/dashboard', 'AdminController@showIndex')->name('admin.dashboard');
 });
+
+Route::group(['prefix' => 'customer'], function ()
+{
+    Route::get('list', 'CustomerController@index')->name('customers.list');
+});
+
