@@ -6,6 +6,7 @@ use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerController extends Controller
 {
@@ -29,8 +30,7 @@ class CustomerController extends Controller
         $customer->address = $request->address;
         $customer->save();
 
-        Session::flash('success', "Customer $customer->name has been created successful");
-
+        \alert("Created Successful",'','success')->autoClose(2000)->timerProgressBar();
         return redirect()->route('customer.list');
     }
 
@@ -39,6 +39,7 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         $customer->delete();
 
+        notify("Deleted $customer->name",'success');
         return redirect()->route('customer.list');
     }
 
@@ -56,6 +57,8 @@ class CustomerController extends Controller
         $customer->age = $request->age;
         $customer->address = $request->address;
         $customer->save();
+
+        toast('Update Complete','success')->autoClose(3000)->timerProgressBar();
         return redirect()->route('customer.list');
     }
 

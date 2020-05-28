@@ -8,6 +8,9 @@
     <link rel="stylesheet" href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'>
     <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
+    @notify_css
+    @notify_js
+    @include('sweetalert::alert')
     <title>Document</title>
 </head>
 <body>
@@ -37,6 +40,7 @@
         </div>
     </div>
 </div>
+@notify_render
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </body>

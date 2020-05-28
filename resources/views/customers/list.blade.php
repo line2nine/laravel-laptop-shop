@@ -1,9 +1,18 @@
 @extends('admin.dashboard')
 @section('content')
-    @if(\Illuminate\Support\Facades\Session::has('success'))
-        <span style="color: red">{{\Illuminate\Support\Facades\Session::get('success')}}</span>
-    @endif
-    <br>
+    @include('sweetalert::alert')
+    <h1 style="text-align: center">Customers List</h1>
+    <a href="{{route('customer.register')}}" class="btn btn-success mb-2">Create</a>
+    <form class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for...">
+            <div class="input-group-append">
+                <button class="btn btn-dark" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </form>
     <table class="table">
         <thead class="thead-dark">
         <tr>
@@ -26,8 +35,8 @@
                 <td>
                     <a href="{{route('customer.detail', $customer->id)}}" class="btn btn-warning">View</a>
                     <a href="{{ route('customer.edit', $customer->id)}}" class="btn btn-primary">Edit</a>
-                    <a onclick="return confirm('Are You Sure?')"
-                       href="{{ route('customer.delete', $customer->id)}}" class="btn btn-danger">Delete</a>
+                    <a onclick="return confirm('Are You Sure?')" href="{{ route('customer.delete', $customer->id)}}"
+                       class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         @endforeach

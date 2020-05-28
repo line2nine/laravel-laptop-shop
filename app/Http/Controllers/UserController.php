@@ -42,8 +42,10 @@ class UserController extends Controller
         ];
 
         if (Auth::attempt($user)) {
+            notify("Long time no see, let get back to work",'success','Welcome!');
             return redirect()->route('admin.dashboard');
         } else {
+            notify('Please re-check email or password','error','Something wrong!');
             return back();
         }
     }

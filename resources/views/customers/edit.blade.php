@@ -20,6 +20,6 @@
             <input type="text" name="address" class="form-control" value="{{$customer->address}}">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a class="btn btn-secondary" href="{{route('customer.list')}}">Back</a>
+        <a class="btn btn-secondary" href="{{route('customer.list')}}">Cancel</a>
     </form>
 @endsection

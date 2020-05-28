@@ -10,11 +10,13 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/customer-reg.css')}}" rel="stylesheet">
+    @notify_css
+    @notify_js
     <title>Dashboard</title>
 </head>
 <body id="page-top">
 <div id="wrapper">
+    @include('sweetalert::alert')
     @include('core.nav')
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
@@ -34,6 +36,7 @@
     </div>
 </div>
 
+@notify_render
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -50,6 +53,5 @@
 <!-- Page level custom scripts -->
 <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
 <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
-<script src="{{asset('js/customer-reg.js')}}"></script>
 </body>
 </html>
