@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Services\UserService;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use function GuzzleHttp\Promise\all;
 
 class UserController extends Controller
 {
@@ -18,9 +21,42 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
+    function showFormLogin()
+    {
+        return view('login');
+    }
+
+    function showIndex()
+    {
+        return view('admin.dashboard');
+    }
+
+    function login(Request $request)
+    {
+        $username = $request->username;
+        $password = $request->password;
+
+        $user = [
+            'email' => $username,
+            'password' => $password
+        ];
+
+        if (Auth::attempt($user)) {
+            return redirect()->route('admin.dashboard');
+        } else {
+            return back();
+        }
+    }
+
     function getAll()
     {
-        $users = $this->userService->getAllUser();
+        $users = User::all();
         return view('users.list', compact('users'));
+    }
+
+    function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
