@@ -162,10 +162,12 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
-                <a class="dropdown-item" href="#">
+                @if(\Illuminate\Support\Facades\Auth::check())
+                <a class="dropdown-item" href="{{route('user.changePass', auth()->user()->id)}}">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
+                    Change Password
                 </a>
+                @endif
                 <a class="dropdown-item" href="#">
                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                     Activity Log

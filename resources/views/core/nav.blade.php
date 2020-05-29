@@ -3,7 +3,10 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.dashboard')}}">
         <div class="sidebar-brand-icon rotate-n-15">
+            @if(\Illuminate\Support\Facades\Auth::user()->role == \App\Http\Controllers\Role::ADMIN)
             <i class="fas fa-laptop-code"></i>
+            @else <i class="fas fa-laptop"></i>
+            @endif
         </div>
         @if(\Illuminate\Support\Facades\Auth::check())
         <div class="sidebar-brand-text mx-3">{{auth()->user()->name}}</div>
@@ -38,7 +41,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu:</h6>
                 <a class="collapse-item" href="{{route('customer.list')}}">List</a>
-                <a class="collapse-item" href="{{route('customer.register')}}">Register</a>
+                <a class="collapse-item" href="{{route('customer.register')}}">Create New</a>
             </div>
         </div>
     </li>
@@ -53,7 +56,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu:</h6>
                 <a class="collapse-item" href="{{route('user.list')}}">List</a>
-                <a class="collapse-item" href="{{route('user.register')}}">Register</a>
+                @if(\Illuminate\Support\Facades\Auth::user()->role == \App\Http\Controllers\Role::ADMIN)
+                <a class="collapse-item" href="{{route('user.register')}}">Create New</a>
+                @endif
             </div>
         </div>
     </li>

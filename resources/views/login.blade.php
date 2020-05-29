@@ -18,13 +18,19 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <form class="box" action="{{route('admin.dashboard')}}" method="post">
+                <form class="box" action="{{route('login')}}" method="post">
                     @csrf
                     <h1>Login</h1>
-                    <p class="text-muted"> Please enter your login and password!</p> <input type="text" name="username"
-                                                                                            placeholder="Username">
-                    <input type="password" name="password" placeholder="Password"> <a class="forgot text-muted"
-                                                                                      href="#">Forgot password?</a>
+                    <p class="text-muted"> Please enter your login and password!</p>
+                    <input type="text" name="username" placeholder="Username" required>
+                    @if($errors->first('username'))
+                        <p class="text-danger"><sub>*{{$errors->first('username')}}</sub></p>
+                    @endif
+                    <input type="password" name="password" placeholder="Password" required>
+                    @if($errors->first('password'))
+                        <p class="text-danger"><sub>*{{$errors->first('password')}}</sub></p>
+                    @endif
+                    <a class="forgot text-muted" href="#">Forgot password?</a>
                     <input type="submit" name="" value="Login" href="#">
                     <div class="col-md-12">
                         <ul class="social-network social-circle">
