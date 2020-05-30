@@ -30,7 +30,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Address</label>
+            <label>Address</label>
             <input type="text" name="address" class="form-control @if($errors->first('address')) is-invalid @endif"
                    required>
             @if($errors->first('address'))

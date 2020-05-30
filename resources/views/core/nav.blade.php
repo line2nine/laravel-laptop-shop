@@ -57,7 +57,7 @@
                 <h6 class="collapse-header">Menu:</h6>
                 <a class="collapse-item" href="{{route('user.list')}}">List</a>
                 @if(\Illuminate\Support\Facades\Auth::user()->role == \App\Http\Controllers\Role::ADMIN)
-                <a class="collapse-item" href="{{route('user.register')}}">Create New</a>
+                <a class="collapse-item" href="{{route('user.create')}}">Create New</a>
                 @endif
             </div>
         </div>

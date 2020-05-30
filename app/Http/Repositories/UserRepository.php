@@ -9,6 +9,7 @@ use App\User;
 class UserRepository
 {
     protected $user;
+
     public function __construct(User $user)
     {
         $this->user = $user;
@@ -24,7 +25,13 @@ class UserRepository
         return $this->user->findOrFail($id);
     }
 
-    public function save($user) {
+    public function save($user)
+    {
         $user->save();
+    }
+
+    public function searchUser($keyword)
+    {
+        return $this->user->where('name', 'LIKE', '%' . $keyword . '%')->get();
     }
 }

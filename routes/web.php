@@ -17,16 +17,22 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('login', 'UserController@showFormLogin')->name('login');
-Route::post('login', 'UserController@login');
-Route::get('logout', 'UserController@logout')->name('logout');
+Route::get('login', 'LoginController@showFormLogin')->name('login');
+Route::post('login', 'LoginController@login');
+Route::get('logout', 'LoginController@logout')->name('logout');
 
 Route::middleware(['auth', 'check.role'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('dashboard', 'UserController@showDashboard')->name('admin.dashboard');
         Route::group(['prefix' => 'user'], function () {
             Route::get('list', 'UserController@getAll')->name('user.list');
-            Route::get('register', 'UserController@create')->name('user.register');
+            Route::get('search', 'UserController@search')->name('user.search');
+            Route::get('create-new', 'UserController@create')->name('user.create');
+            Route::post('create-new', 'UserController@store');
+            Route::get('{id}/delete', 'UserController@delete')->name('user.delete');
+            Route::get('{id}/edit', 'UserController@edit')->name('user.edit');
+            Route::post('{id}/edit', 'UserController@update');
+            Route::get('{id}/detail', 'UserController@userDetail')->name('user.detail');
             Route::get('{id}/change-password', 'UserController@showFormChangePass')->name('user.changePass');
             Route::post('{id}/change-password', 'UserController@updatePass');
         });
