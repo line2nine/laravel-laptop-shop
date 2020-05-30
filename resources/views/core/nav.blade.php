@@ -41,7 +41,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu:</h6>
                 <a class="collapse-item" href="{{route('customer.list')}}">List</a>
-                <a class="collapse-item" href="{{route('customer.register')}}">Create New</a>
+                <a class="collapse-item" href="{{route('customer.create')}}">Create New</a>
             </div>
         </div>
     </li>

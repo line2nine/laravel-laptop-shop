@@ -11,6 +11,10 @@
         rel="stylesheet">
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/customer-avatar.css')}}" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{asset('css/customer-profile.css')}}" rel="stylesheet">
+    <link href="{{asset('css/customer-edit.css')}}" rel="stylesheet">
     @notify_css
     @notify_js
     <title>Dashboard</title>
@@ -22,7 +26,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             @include('core.header')
-            <div class="container-fluid">
+            <div class="container-fluid ">
                 <div class="row">
                     <div class="col-12">
                         @yield('content')

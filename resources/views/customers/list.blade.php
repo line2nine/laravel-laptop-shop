@@ -2,7 +2,7 @@
 @section('content')
     @include('sweetalert::alert')
     <h1 style="text-align: center">Customers List</h1>
-    <a href="{{route('customer.register')}}" class="btn btn-success mb-2">Create</a>
+    <a href="{{route('customer.create')}}" class="btn btn-success mb-2">Create</a>
     <form class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search mb-2" method="get"
           action="{{route('customer.search')}}">
         @csrf

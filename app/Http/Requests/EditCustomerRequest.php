@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CreateCustomerRequest extends FormRequest
+class EditCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +27,7 @@ class CreateCustomerRequest extends FormRequest
     {
         return [
             'name' => 'required|regex:/^([a-zA-Z\.]+)(\s[a-zA-Z\.]+)*$/|min:2|max:32',
-            'email'=> 'required|email|unique:customers,email',
+            'email'=> "required|email|unique:customers,email,$this->id,id",
             'age' => 'required',
             'address'=> 'required'
         ];

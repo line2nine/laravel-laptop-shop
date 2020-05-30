@@ -3,26 +3,33 @@
     <form action="{{route('user.changePass', $user->id)}}" method="post">
         @csrf
         <div class="form-group">
-            <label >Name</label>
+            <label>Name</label>
             <input type="text" name="name" class="form-control" value="{{$user->name}}" readonly>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Current Password</label>
-            <input type="password" name="oldPass" class="form-control">
+            <label>Current Password<sup class="text-danger">*</sup></label>
+            <input type="password" name="oldPass" class="form-control
+            @if(\Illuminate\Support\Facades\Session::has('error'))
+                is-invalid
+            @endif" required>
             @if(\Illuminate\Support\Facades\Session::has('error'))
                 <p class="text-danger">{{\Illuminate\Support\Facades\Session::get('error')}}</p>
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">New Password</label>
-            <input type="password" name="newPass" class="form-control">
+            <label>New Password<sup class="text-danger">*</sup></label>
+            <input type="password" name="newPass" class="form-control @if($errors->first('newPass'))
+                is-invalid
+            @endif" required>
             @if($errors->first('newPass'))
                 <p class="text-danger">{{$errors->first('newPass')}}</p>
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Confirm New Password</label>
-            <input type="password" name="confirmPass" class="form-control">
+            <label>Confirm New Password<sup class="text-danger">*</sup></label>
+            <input type="password" name="confirmPass" class="form-control @if($errors->first('confirmPass'))
+                is-invalid
+            @endif" required>
             @if($errors->first('confirmPass'))
                 <p class="text-danger">{{$errors->first('confirmPass')}}</p>
             @endif

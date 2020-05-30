@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('content2')
-    <form action="{{route('customer.register')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('customer.create')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label>Name</label>

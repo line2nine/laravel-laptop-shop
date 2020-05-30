@@ -4,38 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Http\Requests\CreateCustomerRequest;
+use App\Http\Requests\EditCustomerRequest;
+use App\Http\Services\CustomerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerController extends Controller
 {
+    protected $customerService;
+
+    public function __construct(CustomerService $customerService)
+    {
+        $this->customerService = $customerService;
+    }
+
     function getAll()
     {
-        $customers = Customer::all();
+        $customers = $this->customerService->getAll();
         return view('customers.list', compact('customers'));
     }
 
-    function register()
+    function create()
     {
-        return view('customers.register');
+        return view('customers.create');
     }
 
-    function create(CreateCustomerRequest $request)
+    function store(CreateCustomerRequest $request)
     {
-        $customer = new Customer();
-        $customer->name = $request->name;
-        $customer->email = $request->email;
-        $customer->age = $request->age;
-        $customer->address = $request->address;
-
-        if ($request->hasFile('image')) {
-            $customer->image = $request->image->store('images', 'public');
-        } else {
-            $customer->image = 'images/default-avatar.png';
-        }
-        $customer->save();
+        $this->customerService->create($request);
 
         \alert("Created Successful", '', 'success')->autoClose(2000)->timerProgressBar();
         return redirect()->route('customer.list');
@@ -43,8 +42,12 @@ class CustomerController extends Controller
 
     function delete($id)
     {
-        $customer = Customer::find($id);
+        $customer = $this->customerService->find($id);
+        $filePath = $customer->image;
         $customer->delete();
+        if ($filePath !== 'images/default-avatar.png') {
+            Storage::delete("public/" . $filePath);
+        }
 
         notify("Deleted customer $customer->name", 'success');
         return redirect()->route('customer.list');
@@ -52,30 +55,27 @@ class CustomerController extends Controller
 
     function edit($id)
     {
-        $customer = Customer::findOrFail($id);
+        $customer = $this->customerService->find($id);
         return view('customers.edit', compact('customer'));
     }
 
-    function update(Request $request, $id)
+    function update(EditCustomerRequest $request, $id)
     {
-        $customer = Customer::findOrFail($id);
-        $customer->name = $request->name;
-        $customer->email = $request->email;
-        $customer->age = $request->age;
-        $customer->address = $request->address;
-
-        if ($request->hasFile('image')) {
-            $customer->image = $request->image->store('images', 'public');
+        $customer = $this->customerService->find($id);
+        $oldFilePath = $customer->image;
+        $newFilePath = $request->image;
+        if ($oldFilePath !== 'images/default-avatar.png' && $newFilePath !== null) {
+            Storage::delete("public/" . $oldFilePath);
         }
-        $customer->save();
+        $this->customerService->update($customer, $request);
 
-        toast('Update Complete', 'success')->autoClose(3000)->timerProgressBar();
+        toast('Update Completed', 'success')->position('top')->autoClose(3000)->timerProgressBar();
         return redirect()->route('customer.list');
     }
 
     function customerDetail($id)
     {
-        $customer = Customer::findOrFail($id);
+        $customer = $this->customerService->find($id);
         return view('customers.detail', compact('customer'));
     }
 
@@ -83,7 +83,7 @@ class CustomerController extends Controller
     {
         $keyword = $request->keyword;
         if ($keyword) {
-            $customers = Customer::where('name', 'LIKE', '%' . $keyword . '%')->get();
+            $customers = $this->customerService->searchByKeyword($request);
             return view('customers.list', compact('customers'));
         } else {
             return redirect()->route('customer.list');
