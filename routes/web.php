@@ -20,12 +20,15 @@ Route::get('/', function () {
 Route::get('home-page', function (){
     return view('home.master');
 });
+Route::get('second-page', function (){
+    return view('home.second');
+});
 
 Route::get('login', 'LoginController@showFormLogin')->name('login');
 Route::post('login', 'LoginController@login');
 Route::get('logout', 'LoginController@logout')->name('logout');
 
-Route::middleware(['auth', 'check.role'])->group(function () {
+// Route::middleware(['auth', 'check.role'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('dashboard', 'UserController@showDashboard')->name('admin.dashboard');
         Route::group(['prefix' => 'user'], function () {
@@ -53,7 +56,7 @@ Route::middleware(['auth', 'check.role'])->group(function () {
             Route::get('{id}/detail', 'CustomerController@customerDetail')->name('customer.detail');
         });
     });
-});
+// });
 
 
 
