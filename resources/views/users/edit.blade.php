@@ -30,6 +30,7 @@
         </div>
         <div class="form-group">
             <label>Role</label>
+            @if(\Illuminate\Support\Facades\Auth::user()->role == \App\Http\Controllers\Role::ADMIN)
             <select class="form-control" name="role">
                 <option
                     @if($user->role == \App\Http\Controllers\Role::ADMIN)
@@ -49,6 +50,27 @@
                     value="{{ \App\Http\Controllers\Role::MEMBER }}">Member
                 </option>
             </select>
+            @else
+                <select class="form-control" name="role" readonly tabindex="-1">
+                    <option
+                        @if($user->role == \App\Http\Controllers\Role::ADMIN)
+                        selected
+                        @endif
+                        value="{{ \App\Http\Controllers\Role::ADMIN }}">Admin</option>
+                    <option
+                        @if($user->role == \App\Http\Controllers\Role::MODERATOR)
+                        selected
+                        @endif
+                        value="{{ \App\Http\Controllers\Role::MODERATOR }}">Moderator
+                    </option>
+                    <option
+                        @if($user->role == \App\Http\Controllers\Role::MEMBER)
+                        selected
+                        @endif
+                        value="{{ \App\Http\Controllers\Role::MEMBER }}">Member
+                    </option>
+                </select>
+            @endif
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <a class="btn btn-secondary" href="{{route('user.list')}}">Cancel</a>

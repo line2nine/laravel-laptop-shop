@@ -25,8 +25,8 @@ class ChangePasswordUserRequest extends FormRequest
     {
         return [
             'oldPass' => 'required',
-            'newPass' => 'required|different:oldPass',
-            'confirmPass' => 'required|same:newPass'
+            'newPass' => 'required|different:oldPass|min:8|max:32',
+            'confirmPass' => 'required|same:newPass|min:8|max:32'
         ];
     }
 }

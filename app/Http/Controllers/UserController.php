@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ChangePasswordUserRequest;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\EditUserRequest;
-use App\Http\Requests\LoginRequest;
 use App\Http\Services\UserService;
 use App\User;
 use Illuminate\Http\Request;
@@ -21,8 +20,6 @@ class UserController extends Controller
 
     function __construct(UserService $userService)
     {
-//        $this->middleware('auth');
-//        $this->middleware('isAdmin');
         $this->userService = $userService;
     }
 
@@ -45,7 +42,6 @@ class UserController extends Controller
     function store(CreateUserRequest $request)
     {
         $this->userService->create($request);
-
         \alert("Created Successful", '', 'success')->autoClose(2000)->timerProgressBar();
         return redirect()->route('user.list');
     }
@@ -55,10 +51,9 @@ class UserController extends Controller
         $user = $this->userService->find($id);
         $filePath = $user->image;
         $user->delete();
-        if ($filePath !== 'images/default-avatar.png') {
+        if ($filePath !== 'images/default-avatar.png' && $filePath !== 'images/default-admin.png') {
             Storage::delete("public/" . $filePath);
         }
-
         notify("Deleted user $user->name", 'success');
         return redirect()->route('user.list');
     }
@@ -66,40 +61,38 @@ class UserController extends Controller
     function edit($id)
     {
         $user = $this->userService->find($id);
-        return view('users.edit', compact('user'));
+        if (Auth::user()->id == $user->id || Auth::user()->role == Role::ADMIN) {
+            return view('users.edit', compact('user'));
+        }
+        return abort(403);
     }
 
     function update(EditUserRequest $request, $id)
     {
         $user = $this->userService->find($id);
-        $oldFilePath = $user->image;
-        $newFilePath = $request->image;
-        if ($oldFilePath !== 'images/default-avatar.png' && $newFilePath !== null) {
-            Storage::delete("public/" . $oldFilePath);
-        }
         $this->userService->update($user, $request);
-
         toast('Update Completed', 'success')->position('top')->autoClose(3000)->timerProgressBar();
         return redirect()->route('user.list');
     }
 
-    function showFormChangePass($id)
+    function changePass($id)
     {
         $user = $this->userService->find($id);
-        return view('users.changePass', compact('user'));
+        if (Auth::user()->role == $user->id) {
+            return view('users.changePass', compact('user'));
+        }
+        return abort(403);
     }
 
     function updatePass(ChangePasswordUserRequest $request, $id)
     {
         $user = $this->userService->find($id);
-        $oldPass = $request->oldPass;
-        $newPass = $request->newPass;
-        if (!Hash::check($oldPass, Auth::user()->password)){
-            return back()->with('error','Wrong current password, try again');
+        if ($this->userService->checkPass($request)) {
+            $this->userService->changePass($user, $request);
+            alert('Successful', 'Your password has been changed', 'success')->autoClose(2000);
+            return redirect()->route('admin.dashboard');
         }
-        $this->userService->changePass($user, $newPass);
-        alert('Successful','Your password has been changed','success')->autoClose(2000);
-        return redirect()->route('admin.dashboard');
+        return back()->with('error', 'Wrong current password, try again');
     }
 
     function userDetail($id)
@@ -110,12 +103,10 @@ class UserController extends Controller
 
     function search(Request $request)
     {
-        $keyword = $request->keyword;
-        if ($keyword) {
+        if ($this->userService->searchByKeyword($request)) {
             $users = $this->userService->searchByKeyword($request);
             return view('users.list', compact('users'));
-        } else {
-            return redirect()->route('user.list');
         }
+        return redirect()->route('user.list');
     }
 }

@@ -7,7 +7,10 @@ namespace App\Http\Services;
 use App\Http\Controllers\Role;
 use App\Http\Repositories\UserRepository;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class UserService
 {
@@ -49,22 +52,40 @@ class UserService
     {
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role = $request->role;
+        $oldFilePath = $user->image;
+        $newFilePath = $request->image;
+        if ($oldFilePath !== 'images/default-avatar.png' && $oldFilePath !== 'images/default-admin.png' && $newFilePath !== null) {
+            Storage::delete("public/" . $oldFilePath);
+        }
         if ($request->hasFile('image')) {
             $user->image = $request->image->store('images', 'public');
+        }
+        if (Auth::user()->role == Role::ADMIN) {
+            $user->role = $request->role;
         }
         $this->userRepo->save($user);
     }
 
     public function changePass($user, $request)
     {
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make($request->newPass);
         $this->userRepo->save($user);
+    }
+
+    public function checkPass($request)
+    {
+        if (Hash::check($request->oldPass, Auth::user()->password)) {
+            return true;
+        }
+        return false;
     }
 
     public function searchByKeyword($request)
     {
         $keyword = $request->keyword;
-        return $this->userRepo->searchUser($keyword);
+        if ($keyword){
+            return $this->userRepo->searchUser($keyword);
+        }
+        return false;
     }
 }

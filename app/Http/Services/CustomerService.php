@@ -7,6 +7,7 @@ namespace App\Http\Services;
 use App\Customer;
 use App\Http\Repositories\CustomerRepository;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class CustomerService
 {
@@ -48,6 +49,11 @@ class CustomerService
         $customer->email = $request->email;
         $customer->age = $request->age;
         $customer->address = $request->address;
+        $oldFilePath = $customer->image;
+        $newFilePath = $request->image;
+        if ($oldFilePath !== 'images/default-avatar.png' && $newFilePath !== null) {
+            Storage::delete("public/" . $oldFilePath);
+        }
         if ($request->hasFile('image')) {
             $customer->image = $request->image->store('images', 'public');
         }
@@ -57,6 +63,9 @@ class CustomerService
     public function searchByKeyword($request)
     {
         $keyword = $request->keyword;
-        return $this->customerRepo->searchCustomer($keyword);
+        if ($keyword){
+            return $this->customerRepo->searchCustomer($keyword);
+        }
+        return false;
     }
 }

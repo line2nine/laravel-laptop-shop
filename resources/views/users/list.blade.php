@@ -2,7 +2,9 @@
 @section('content')
     @include('sweetalert::alert')
     <h1 style="text-align: center">Users List</h1>
+    @if(\Illuminate\Support\Facades\Auth::user()->role == \App\Http\Controllers\Role::ADMIN)
     <a href="{{route('user.create')}}" class="btn btn-success mb-2">Create</a>
+    @endif
     <form class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search mb-2" method="get"
           action="{{route('user.search')}}">
         @csrf
@@ -52,9 +54,11 @@
                 </td>
                 <td>
                     <a href="{{route('user.detail', $user->id)}}" class="btn btn-warning">View</a>
+                    @if(\Illuminate\Support\Facades\Auth::user()->role == \App\Http\Controllers\Role::ADMIN)
                     <a href="{{ route('user.edit', $user->id)}}" class="btn btn-primary">Edit</a>
                     <a onclick="return confirm('Are You Sure?')" href="{{ route('user.delete', $user->id)}}"
                        class="btn btn-danger">Delete</a>
+                    @endif
                 </td>
             </tr>
         @empty

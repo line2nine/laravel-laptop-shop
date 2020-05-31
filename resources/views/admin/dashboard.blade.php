@@ -22,10 +22,10 @@
 <body id="page-top">
 <div id="wrapper">
     @include('sweetalert::alert')
-    @include('core.nav')
+    @include('admin.core.nav')
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
-            @include('core.header')
+            @include('admin.core.header')
             <div class="container-fluid ">
                 <div class="row">
                     <div class="col-12">
@@ -36,7 +36,7 @@
             </div>
         </div>
         <footer class="sticky-footer bg-white">
-            @include('core.footer')
+            @include('admin.core.footer')
         </footer>
     </div>
 </div>

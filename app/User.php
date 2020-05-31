@@ -8,6 +8,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    protected $table = 'users';
+
     use Notifiable;
 
     /**
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'image', 'role'
     ];
 
     /**

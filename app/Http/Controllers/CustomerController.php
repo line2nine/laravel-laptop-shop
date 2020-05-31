@@ -48,7 +48,6 @@ class CustomerController extends Controller
         if ($filePath !== 'images/default-avatar.png') {
             Storage::delete("public/" . $filePath);
         }
-
         notify("Deleted customer $customer->name", 'success');
         return redirect()->route('customer.list');
     }
@@ -62,13 +61,7 @@ class CustomerController extends Controller
     function update(EditCustomerRequest $request, $id)
     {
         $customer = $this->customerService->find($id);
-        $oldFilePath = $customer->image;
-        $newFilePath = $request->image;
-        if ($oldFilePath !== 'images/default-avatar.png' && $newFilePath !== null) {
-            Storage::delete("public/" . $oldFilePath);
-        }
         $this->customerService->update($customer, $request);
-
         toast('Update Completed', 'success')->position('top')->autoClose(3000)->timerProgressBar();
         return redirect()->route('customer.list');
     }
@@ -81,12 +74,10 @@ class CustomerController extends Controller
 
     function search(Request $request)
     {
-        $keyword = $request->keyword;
-        if ($keyword) {
+        if ($this->customerService->searchByKeyword($request)) {
             $customers = $this->customerService->searchByKeyword($request);
             return view('customers.list', compact('customers'));
-        } else {
-            return redirect()->route('customer.list');
         }
+        return redirect()->route('customer.list');
     }
 }

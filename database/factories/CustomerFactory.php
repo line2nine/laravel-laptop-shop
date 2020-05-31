@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Factory;
 $factory->define(Customer::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'image' => $faker->imageUrl(100,100),
+        'image' => 'images/default-avatar.png',
         'email' => $faker->unique()->safeEmail,
-        'age' => $faker->numberBetween(12,80),
+        'age' => $faker->numberBetween(12,60),
         'address' => $faker->address
     ];
 });
