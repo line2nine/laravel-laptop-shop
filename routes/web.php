@@ -17,9 +17,7 @@ Route::get('/', function () {
     return redirect('home-page');
 });
 
-Route::get('home-page', function (){
-    return view('home.master');
-});
+Route::get('home-page', 'HomeController@index')->name('index');
 
 Route::get('login', 'LoginController@showFormLogin')->name('login');
 Route::post('login', 'LoginController@login');
@@ -51,6 +49,16 @@ Route::middleware(['auth', 'check.role'])->group(function () {
             Route::get('{id}/edit', 'CustomerController@edit')->name('customer.edit');
             Route::post('{id}/edit', 'CustomerController@update');
             Route::get('{id}/detail', 'CustomerController@customerDetail')->name('customer.detail');
+        });
+        Route::group(['prefix' => 'product'], function () {
+            Route::get('list', 'ProductController@getAll')->name('product.list');
+            Route::get('search', 'ProductController@search')->name('product.search');
+            Route::get('create-new', 'ProductController@create')->name('product.create');
+            Route::post('create-new', 'ProductController@store');
+            Route::get('{id}/delete', 'ProductController@delete')->name('product.delete');
+            Route::get('{id}/edit', 'ProductController@edit')->name('product.edit');
+            Route::post('{id}/edit', 'ProductController@update');
+            Route::get('{id}/detail', 'ProductController@productDetail')->name('product.detail');
         });
     });
 });

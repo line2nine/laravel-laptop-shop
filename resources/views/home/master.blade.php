@@ -12,19 +12,32 @@
     <link href="{{asset('assets/css/carousel-recommendation.css')}}" rel="stylesheet">
     <link href="{{asset('assets/ionicons-2.0.1/css/ionicons.css')}}" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Catamaran:400,100,300' rel='stylesheet' type='text/css'>
-    <title>LLStore</title>
+    @notify_css
+    @notify_js
+    @include('sweetalert::alert')
+    <title>LStore</title>
 </head>
 <body>
 <nav class="navbar navbar-default">
     @include('home.core.nav')
 </nav>
-<header>
-    @include('home.core.main')
-</header>
+
+@yield('main')
+
+<hr class="offset-lg hidden-xs">
+<hr class="offset-md">
+<div class="container">
+    @yield('login')
+    <br><br>
+    <br class="hidden-xs">
+    <br class="hidden-xs">
+</div>
+
 <footer>
     @include('home.core.footer')
 </footer>
 
+@notify_render
 <script src="{{asset('assets/js/jquery-latest.min.js')}}"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->

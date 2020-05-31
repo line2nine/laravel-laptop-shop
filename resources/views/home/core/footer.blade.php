@@ -132,17 +132,16 @@
 
         </div>
         <div class="col-sm-3 col-md-3 col-md-offset-1 align-right hidden-sm hidden-xs">
-            <h1 class="h4">Unistore, Inc.</h1>
+            <h1 class="h4">LStore, Inc.</h1>
 
             <address>
-                1305 Market Street, Suite 800<br>
-                San Francisco, CA 94102<br>
-                <abbr title="Phone">P:</abbr> (123) 456-7890
+                Ha Noi, Viet Nam<br>
+                <abbr title="Phone">P:</abbr> (+84) 943-294-292
             </address>
 
             <address>
                 <strong>Support</strong><br>
-                <a href="mailto:#">sup@example.com</a>
+                <a href="mailto:#">support@lstore.com</a>
             </address>
 
         </div>
@@ -169,7 +168,7 @@
         <div class="col-sm-4 col-md-3 align-right align-center-xs">
             <hr class="offset-sm hidden-sm">
             <hr class="offset-sm">
-            <p>Unistore Pro © 2016 <br> Designed By <a href="http://sunrise.ru.com/" target="_blank">Sunrise Digital</a></p>
+            <p>LStore Pro © 2020 <br> Designed By <a href="http://sunrise.ru.com/" target="_blank">Sunrise Digital</a></p>
             <hr class="offset-lg visible-xs">
         </div>
     </div>
