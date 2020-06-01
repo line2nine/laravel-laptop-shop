@@ -13,6 +13,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'detail' => Str::random(10),
         'price' => $faker->numberBetween(100, 250),
         'image' => 'images/default-product.jpg',
-        'category_id' => $faker->numberBetween(1, 5)
+        'category_id' => $faker->numberBetween(1, 3)
     ];
 });

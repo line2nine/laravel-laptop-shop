@@ -23,6 +23,12 @@ class ProductController extends Controller
         return view('products.list', compact('products'));
     }
 
+    public function getAllStore()
+    {
+        $products = $this->productService->getAll();
+        return view('home.store', compact('products'));
+    }
+
     function create()
     {
         return view('products.create');

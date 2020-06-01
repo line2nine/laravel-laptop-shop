@@ -1,140 +1,409 @@
-@extends('home.master')
-@section('main')
+@extends('layout.main-layout')
+@section('content-main')
     <header>
-    <div class="carousel" data-count="3" data-current="2">
-        <!-- <button class="btn btn-control"></button> -->
+        <div class="carousel" data-count="3" data-current="1">
 
-        <div class="items">
-            <div class="item" data-marker="1">
-                <img src="{{asset('assets/img/carousel/bckg.jpg')}}" alt="Background" class="background"/>
+            <div class="items">
+                <button class="btn btn-control" data-direction="right"> <i class="ion-ios-arrow-right"></i></button>
+                <button class="btn btn-control" data-direction="left"> <i class="ion-ios-arrow-left"></i></button>
 
-                <div class="content">
-                    <div class="outside-content">
-                        <div class="inside-content">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-12 align-center">
-                                        <h1>New amazing laptops</h1>
-                                        <p>Provide lightweight and powerull</p>
-                                        <a href="./catalog/">More laptops ></a>
-                                        <br><br>
-                                    </div>
-                                    <div class="col-sm-6 col-sm-offset-3 align-center">
-                                        <img src="{{asset('assets/img/carousel/newlaptops.jpg')}}" alt="Laptops"/>
-                                    </div>
+
+                <div class="item center" data-marker="1">
+                    <img src="assets/img/carousel/bckg-2.jpg" alt="Background" class="background hidden-xs hidden-sm"/>
+                    <img src="assets/img/carousel/bckg-2-sm.jpg" alt="Background" class="background visible-sm"/>
+                    <img src="assets/img/carousel/bckg-2-xs.jpg" alt="Background" class="background visible-xs"/>
+
+                    <div class="content">
+                        <div class="outside-content">
+                            <div class="inside-content">
+                                <div class="container align-right">
+
+                                    <h1 class="h3 colorful blue hidden-xs">Provide lightweight and powerull</h1>
+
+                                    <hr class="offset-sm">
+                                    <h2 class="h1 lg upp colorful blue">New amazing <br> laptops</h2>
+                                    <hr class="offset-md">
+                                    <hr class="offset-md">
+                                    <a href="./store/" rel="nofollow" class="btn btn-primary btn-lg black"> More laptops </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item" data-marker="2">
+                    <img src="assets/img/carousel/bckg-1.jpg" alt="Background" class="background hidden-xs hidden-sm"/>
+                    <img src="assets/img/carousel/bckg-1-sm.jpg" alt="Background" class="background visible-sm"/>
+                    <img src="assets/img/carousel/bckg-1-xs.jpg" alt="Background" class="background visible-xs"/>
+
+                    <!-- <img src="assets/img/carousel/newlaptops.jpg" alt="New laptops" title="New laptops" class="item-left hidden-xs"/> -->
+
+                    <div class="content">
+                        <div class="outside-content">
+                            <div class="inside-content">
+                                <div class="container">
+
+                                    <h1 class="h3 colorful blue hidden-xs">Device is designed for the creative people</h1>
+                                    <hr class="offset-sm">
+
+                                    <h2 class="h1 lg upp colorful blue">Apple <br> iMac 27 Retina</h2>
+                                    <hr class="offset-md">
+                                    <hr class="offset-md">
+                                    <a href="./store/" rel="nofollow" class="btn btn-primary btn-lg black"> View products </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item" data-marker="3">
+                    <img src="assets/img/carousel/bckg-3.jpg" alt="Background" class="background hidden-xs hidden-sm"/>
+                    <img src="assets/img/carousel/bckg-3-sm.jpg" alt="Background" class="background visible-sm"/>
+                    <img src="assets/img/carousel/bckg-3-xs.jpg" alt="Background" class="background visible-xs"/>
+
+                    <!-- <img src="assets/img/carousel/ipadair2.jpg" alt="Apple Devices" title="Apple Devices" class="item-right hidden-xs"/> -->
+
+                    <div class="content">
+                        <div class="outside-content">
+                            <div class="inside-content">
+                                <div class="container align-right">
+
+                                    <h1 class="h3 colorful blue hidden-xs">Luxury watches, business tablets and 3D touch: <br> How Apple plans to stay ahead in mobile.</h1>
+
+                                    <hr class="offset-sm">
+                                    <h2 class="h1 lg upp colorful blue">Brand new day <br class="hidden-xs"> for business</h2>
+                                    <hr class="offset-md">
+                                    <hr class="offset-md">
+                                    <a href="./blog/" rel="nofollow" class="btn btn-primary btn-lg black"> View article </a>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="item active" data-marker="2">
-                <img src="{{asset('assets/img/carousel/bckg.jpg')}}" alt="Background" class="background"/>
 
-                <div class="content">
-                    <div class="outside-content">
-                        <div class="inside-content">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-8 col-sm-offset-2 align-center">
-                                        <img src="{{asset('assets/img/carousel/surfaces.jpg')}}" alt="Surface Pro"/>
-                                    </div>
-                                    <div class="col-sm-12 align-center">
-                                        <h1>8 Windows Hybrid Laptops</h1>
-                                        <p>The laptop comes with an Intel i5 chip and 8GB of RAM.</p>
-                                        <a href="./catalog/">View surfaces ></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item" data-marker="3">
-                <img src="{{asset('assets/img/carousel/bckg.jpg')}}" alt="Background" class="background"/>
+            <ul class="markers">
+                <li data-marker="1" data-style="white" class="active"></li>
+                <li data-marker="2" data-style="white"></li>
+                <li data-marker="3" data-style="white"></li>
+            </ul>
 
-                <div class="content">
-                    <div class="outside-content">
-                        <div class="inside-content">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-5 col-sm-offset-1 align-center">
-                                        <img src="{{asset('assets/img/carousel/ipadair2.jpg')}}" alt="iPad Air 2"
-                                             class="hidden-xs hidden-sm"/>
-                                        <img src="{{asset('assets/img/carousel/ipadair2m.jpg')}}" alt="iPad Air 2"
-                                             class="hidden-md hidden-lg"/>
-                                    </div>
-                                    <div class="col-sm-4 align-left">
-                                        <br class="hidden-xs hidden-sm"><br class="hidden-xs hidden-sm"><br
-                                            class="hidden-xs hidden-sm">
-                                        <br class="hidden-xs hidden-sm"><br class="hidden-xs hidden-sm"><br
-                                            class="hidden-xs hidden-sm">
-                                        <h1>Luxury devices</h1>
-                                        <br>
-
-                                        <p>
-                                            Luxury watches, business tablets and 3D touch: How Apple plans to stay ahead
-                                            in mobile.
-                                            When it comes to the brand’s latest iPhones, the biggest excitement isn’t
-                                            focused on the addition of a rose gold coloured device but the new 3D touch
-                                            sensors.
-                                        </p>
-                                        <a href="./blog/item-photo.html">View article ></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-
-        <ul class="markers">
-            <li data-marker="1"><img src="{{asset('assets/img/carousel/newlaptops.jpg')}}" alt="Background"/></li>
-            <li data-marker="2" class="active"><img src="{{asset('assets/img/carousel/surfaces.jpg')}}"
-                                                    alt="Background"/></li>
-            <li data-marker="3"><img src="{{asset('assets/img/carousel/ipadair2.jpg')}}" alt="Background"/></li>
-        </ul>
-    </div>
-    <br><br>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3 align-center">
-                <a href="./blog/">
-                    <img src="assets/img/tiles/blog.jpg" alt="Blog" class="image"/>
-                </a>
-                <br><br>
-
-                <a href="./blog/">Blog headlines</a>
-            </div>
-            <div class="col-sm-3 align-center">
-                <a href="#video" data-gallery="#video" data-source="vimeo" data-id="110691368" data-id="110691368" data-title="Apple iPad Air" data-description="So capable, you won’t want to put it down. So thin and light, you won’t have to.">
-                    <img src="assets/img/tiles/video-apple.jpg" alt="New devices" class="image"/>
-                </a>
-                <br><br>
-
-                <a href="#video" data-gallery="#video" data-source="vimeo" data-id="110691368" data-title="Apple iPad Air" data-description="So capable, you won’t want to put it down. So thin and light, you won’t have to.">New apple diveces</a>
-            </div>
-            <div class="col-sm-3 align-center">
-                <a href="#video" data-gallery="#video" data-source="youtube" data-id="6g-ZIm0wge4" data-title="Best New Dell Laptops" data-description="Best of dell's laptops that you can consider buying in 2016. 4 Laptops are featured in the video and all of them has equal importance and there is no order that #1 is better than #2">
-                    <img src="assets/img/tiles/video-dell.jpg" alt="Del XPS" class="image"/>
-                </a>
-                <br><br>
-
-                <a href="#video" data-gallery="#video" data-source="youtube" data-id="6g-ZIm0wge4" data-title="Best New Dell Laptops" data-description="Best of dell's laptops that you can consider buying in 2016. 4 Laptops are featured in the video and all of them has equal importance and there is no order that #1 is better than #2">Brend new DELL XPS</a>
-            </div>
-            <div class="col-sm-3 align-center">
-                <a href="./blog/">
-                    <img src="assets/img/tiles/gallery.jpg" alt="Gallery" class="image"/>
-                </a>
-                <br><br>
-
-                <a href="./blog/">Products gallery</a>
-            </div>
-        </div>
-    </div>
     </header>
-    <br><br>
+    <hr class="offset-lg">
+    <hr class="offset-lg">
+    <section class="products">
+        <div class="container">
+            <h2 class="h2 upp align-center"> Desktops </h2>
+            <hr class="offset-lg">
+
+            <div class="row">
+
+                <div class="col-sm-6 col-md-3 product">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/apple-imac-27-retina.jpg" alt="Apple iMac 27 Retina"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$2099.99</p>
+                            <h2 class="h3">iMac 27 Retina</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 product">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/microsoft-surface-studio.jpg" alt="Microsoft Surface Studio"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$3749.99</p>
+                            <h2 class="h3">Surface Studio</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 product">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/dell-inspiron-23.jpg" alt="Dell Inspion 23"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$1987.99</p>
+                            <h2 class="h3">Dell Inspion 23</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 col-md-3 product">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/lenovo-ideacenter.jpg" alt="Lenovo IdeaCenter"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$2487.99</p>
+                            <h2 class="h3">Lenovo IdeaCenter</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="align-right align-center-xs">
+                <hr class="offset-sm">
+                <a href="./store/"> <h5 class="upp">View all desktops </h5> </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="container">
+            <h2 class="h2 upp align-center"> Hybrid devices</h2>
+            <hr class="offset-lg">
+
+            <div class="row">
+
+                <div class="col-sm-6 col-md-4 product">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/lenovo-yoga.jpg" alt="Lenovo Yoga 900"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$1899.99</p>
+                            <h2 class="h3">Lenovo Yoga 900</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 product">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/surface-pro.jpg" alt="Surface Pro"/></a>
+
+                        <div class="content align-center">
+                            <p class="sale">$2099.99</p>
+                            <p class="price through">$2499.99</p>
+                            <h2 class="h3">Microsoft Surface Pro</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 product">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/hp-spectre-x360.jpg" alt="HP Spectre x360"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$2994.99</p>
+                            <h2 class="h3">HP Spectre x360</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 product visible-sm">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/dell-inspiron-2in1.jpg" alt="Dell Inspiron 7000 2-in-1s"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$1994.99</p>
+                            <h2 class="h3">Dell Inspiron 7000</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="align-right align-center-xs">
+                <hr class="offset-sm">
+                <a href="./store/"> <h5 class="upp">View all devices </h5> </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="products">
+        <div class="container">
+            <h2 class="h2 upp align-center"> Tablets</h2>
+            <hr class="offset-lg">
+
+            <div class="row">
+
+                <div class="col-sm-6 col-md-4 product">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/mi-pad-2.jpg" alt="Xiamomi Mi Pad 2"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$899.99</p>
+                            <h2 class="h3">Mi Pad 2</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 product">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/ipad-air.jpg" alt="Apple iPad Air"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$1099.99</p>
+                            <h2 class="h3">Apple iPad Air</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 product">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/asus-transformer.jpg" alt="Asus Transformer"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$987.99</p>
+                            <h2 class="h3">Asus Transformer</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 product visible-sm">
+                    <div class="body">
+                        <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                        <a href="./"><img src="assets/img/products/ipad-mini.jpg" alt="iPad Mini"/></a>
+
+                        <div class="content align-center">
+                            <p class="price">$399.99</p>
+                            <h2 class="h3">iPad Mini</h2>
+                            <hr class="offset-sm">
+
+                            <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                            <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="align-right align-center-xs">
+                <hr class="offset-sm">
+                <a href="./store/"> <h5 class="upp">View all tablets </h5> </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="blog">
+        <div class="container">
+            <h2 class="h2 upp align-center"> Blog Headlines </h2>
+            <hr class="offset-lg">
+
+            <div class="row">
+
+                <div class="col-sm-6 col-md-6 item">
+
+                    <div class="body">
+                        <a href="#" class="view"><i class="ion-ios-book-outline"></i></a>
+                        <a href="#">
+                            <img src="assets/img/blog/img1.jpg" title="Apple Devices" alt="Apple Devices">
+                        </a>
+
+                        <div class="caption">
+                            <h2 class="h3">The next generation of Multi-Touch</h2>
+                            <label> 07.01.2017</label>
+                            <hr class="offset-sm">
+
+                            <p>
+                                The original iPhone introduced the world to Multi-Touch, forever changing the way people experience technology. With 3D Touch, you can do things that were never possible before. It senses how deeply you press the display, letting you do all kinds of essential things more quickly and simply. And it gives you real-time feedback in the form of subtle taps from the all-new Taptic Engine.
+                            </p>
+                            <hr class="offset-sm">
+
+                            <a href="#"> View article </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 item">
+
+                    <div class="body">
+                        <a href="#" class="view"><i class="ion-ios-book-outline"></i></a>
+                        <a href="#">
+                            <img src="assets/img/blog/img2.jpg" title="Coffee" alt="Coffee">
+                        </a>
+
+                        <div class="caption">
+                            <h2 class="h3">MacBook Pro - brand new day for business.</h2>
+                            <label> 02.01.2017</label>
+                            <hr class="offset-sm">
+
+                            <p>
+                                Organizations everywhere are realizing the potential that Mac brings to their employees by giving them the freedom to use the tools they already know and love. Software and hardware made for each other. Because Apple designs both the software and hardware, every Mac delivers the best possible experience for employees.
+                            </p>
+                            <hr class="offset-sm">
+
+                            <a href="#"> View article <i class="ion-ios-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="align-right align-center-xs">
+                <hr class="offset-sm">
+                <a href="./blog/"> <h5 class="upp">View all articels </h5> </a>
+            </div>
+        </div>
+    </section>
+
+
+    <hr class="offset-lg">
+    <hr class="offset-sm">
 @endsection
 

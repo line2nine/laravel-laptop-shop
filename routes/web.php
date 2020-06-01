@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('home-page', 'HomeController@index')->name('index');
+Route::get('store', 'HomeController@showStore')->name('store');
+Route::get('{id}/detail', 'HomeController@productDetail')->name('detail');
 
 Route::get('login', 'LoginController@showFormLogin')->name('login');
 Route::post('login', 'LoginController@login');

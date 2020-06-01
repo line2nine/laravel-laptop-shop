@@ -1,4 +1,4 @@
-/*!
+lead/*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -484,7 +484,7 @@ p {
 }
 @media (min-width: 768px) {
   .lead {
-    font-size: 21px;
+    font-size: 18px;
   }
 }
 small,
@@ -1738,14 +1738,14 @@ output {
   display: block;
   width: 100%;
   height: 38px;
-  padding: 8px 20px;
+  padding: 8px 16px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
   background-image: none;
   border: 1.5px solid #ccc;
-  border-radius: 4px;
+  border-radius: 0px;
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
@@ -1895,7 +1895,7 @@ fieldset[disabled] .checkbox label {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 select.input-sm {
   height: 30px;
@@ -2188,10 +2188,11 @@ select[multiple].input-lg {
 }
 .btn {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 8px 16px;
   margin-bottom: 0;
-  font-size: 14px;
-  font-weight: normal;
+  min-width: 100px;
+  font-size: 16px;
+  font-weight: normal;  
   line-height: 1.42857143;
   text-align: center;
   white-space: nowrap;
@@ -2205,7 +2206,7 @@ select[multiple].input-lg {
           user-select: none;
   background-image: none;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 0px !important;
 
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -2308,8 +2309,8 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #fff;
-  background-color: #00a1b4;
-  border-color: #018A9A;
+  background-color: rgba(30,30,30,1);
+  border-color: rgba(30,30,30,1);
 }
 .btn-primary:focus,
 .btn-primary.focus {
@@ -2362,9 +2363,6 @@ fieldset[disabled] .btn-primary.focus {
 .btn-primary .badge {
   color: #337ab7;
   background-color: #fff;
-}
-.btn-rounded {
-  border-radius: 80px !important;
 }
 .btn-success {
   color: #fff;
@@ -2594,9 +2592,13 @@ fieldset[disabled] .btn-danger.focus {
   color: #d9534f;
   background-color: #fff;
 }
+.btn.rounded {
+  border-radius: 50px !important;
+}
+
 .btn-link {
   font-weight: normal;
-  color: #337ab7;
+  color: rgba(30,30,30,1);
   border-radius: 0;
 }
 .btn-link,
@@ -2616,9 +2618,10 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #23527c;
-  text-decoration: underline;
+  color: #00a1b4;
+  text-decoration: none;
   background-color: transparent;
+  opacity: 0.7;
 }
 .btn-link[disabled]:hover,
 fieldset[disabled] .btn-link:hover,
@@ -2756,9 +2759,8 @@ tbody.collapse.in {
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  color: #ffffff;
   text-decoration: none;
-  background-color: #00a1b4;
+  background-color: #e7e7e7;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -2800,7 +2802,7 @@ tbody.collapse.in {
   padding: 3px 20px;
   font-size: 12px;
   line-height: 1.42857143;
-  color: #777;
+  color: #333;
   white-space: nowrap;
 }
 .dropdown-backdrop {
@@ -2921,8 +2923,8 @@ tbody.collapse.in {
   padding-left: 12px;
 }
 .btn-group.open .dropdown-toggle {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 .btn-group.open .dropdown-toggle.btn-link {
   -webkit-box-shadow: none;
@@ -3470,7 +3472,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand {
   float: left;
   height: auto;
-  padding: 14px 15px;
+  padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
 }
@@ -3497,7 +3499,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
   background-image: none;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 0px;
 }
 .navbar-toggle:focus {
   outline: 0;
@@ -3716,8 +3718,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #555;
-  background-color: #e7e7e7;
+  color: #000;
+  background-color: #eee;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -3726,14 +3728,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-toggle {
-  border-color: #ddd;
+  border-color: transparent;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
   background-color: #ddd;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #888;
+  background-color: #fff;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
@@ -3747,11 +3749,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #777;
+    color: #fff;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #333;
+    color: #fff;
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
@@ -4177,7 +4179,7 @@ a.badge:focus {
 .container-fluid .jumbotron {
   padding-right: 15px;
   padding-left: 15px;
-  border-radius: 4px;
+  border-radius: 0px;
 }
 .jumbotron .container {
   max-width: 100%;
@@ -4447,7 +4449,7 @@ a.thumbnail.active {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 5px 15px;
   margin-bottom: -1px;
   background-color: #fff;
   /*border: 1px solid #ddd;*/
@@ -5019,7 +5021,7 @@ button.list-group-item-danger.active:focus {
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
-  background-color: #f5f5f5;
+  background-color: #fff;
   border: 1px solid #e3e3e3;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);

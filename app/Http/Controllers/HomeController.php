@@ -2,22 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\ProductService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    protected $homeService;
+
+    public function __construct(ProductService $homeService)
     {
-        return view('home.master');
+        $this->homeService = $homeService;
     }
 
-    public function showMainProducts()
+    public function index()
     {
         return view('home.main');
     }
 
-    public function showSecondProducts()
+    public function showStore()
     {
-        return view('home.second');
+        $homeProducts = $this->homeService->getAll();
+        return view('home.store', compact('homeProducts'));
+    }
+
+    function productDetail($id)
+    {
+        $product = $this->homeService->find($id);
+        return view('home.product', compact('product'));
     }
 }
