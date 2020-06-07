@@ -212,12 +212,11 @@
 
                 <div class="products">
                     <div class="row">
-
                         @foreach($homeProducts as $key => $homeProduct)
                         <div class="col-sm-6 col-md-4 product">
                             <div class="body">
                                 <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
-                                <a href="./"><img src="{{asset('storage/' . $homeProduct->image)}}" alt="Apple iMac 27 Retina"/></a>
+                                <img src="{{asset('storage/' . $homeProduct->image)}}" alt="body" id="img-{{$homeProduct->id}}"/>
 
                                 <div class="content">
                                     <h1 class="h3">{{$homeProduct->name}}</h1>
@@ -225,13 +224,12 @@
                                     <label>{{$homeProduct->category->name}}</label>
 
                                     <a class="btn btn-link" href="{{route('detail', $homeProduct->id)}}"><i class="ion-android-open"></i> Details</a>
-                                    <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+{{--                                    <a class="btn btn-primary btn-sm rounded" href="{{route('cart.add', $homeProduct->id)}}"> <i class="ion-bag"></i> Add to cart</a>--}}
+                                    <button class="btn btn-primary btn-sm rounded" data-id="{{$homeProduct->id}}" type="button"> <i class="ion-bag"></i> Add to cart</button>
                                 </div>
                             </div>
                         </div>
                         @endforeach
-
-
                     </div>
                 </div>
 

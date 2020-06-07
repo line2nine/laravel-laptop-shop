@@ -37,7 +37,7 @@
 		line-height: 33px;
 		letter-spacing: 0em;
 	}
-	
+
 
 	h3, .h3{
 		font-size: 22px;
@@ -57,7 +57,7 @@
 		letter-spacing: 0em;
 	}
 
-	
+
 	h5, .h5{
 		font-size: 16px;
 		font-style: normal;
@@ -531,7 +531,7 @@
 				.products .product .body {
 					box-sizing: border-box;
 					padding: 15px 0 25px;
-					background-color: #fff; 
+					background-color: #fff;
 					border: 1px solid #fff;
 
 					box-shadow: 0px 4px 2px rgba(31,31,31,0.02);
@@ -629,13 +629,13 @@
 						text-align: center;
 
 						opacity: 0;
-						
+
 						-webkit-transition: all 0.3s;
 						-moz-transition: all 0.3s;
 						-ms-transition: all 0.3s;
 						-o-transition: all 0.3s;
 						transition: all 0.3s;
-						
+
 						-webkit-transform: scale(0,0);
 						-moz-transform: scale(0,0);
 						-ms-transform: scale(0,0);
@@ -654,7 +654,7 @@
 
 					.products .product:hover a.favorites{
 						opacity: 1;
-						
+
 						-webkit-transform: scale(1,1);
 						-moz-transform: scale(1,1);
 						-ms-transform: scale(1,1);
@@ -788,7 +788,7 @@
 							border: 1px solid #777;
 							margin: 0 10px 0 0;
 						}
-						
+
 
 
 
@@ -802,14 +802,14 @@
 						    line-height: 14px;
 						    margin: 0;
 						    padding: 0;
-							
+
 							-webkit-transition: all 0.3s;
 							-moz-transition: all 0.3s;
 							-ms-transition: all 0.3s;
 							-o-transition: all 0.3s;
 							transition: all 0.3s;
 						}
-						
+
 						.filter .item > .controls > .checkbox-group[data-status="inactive"] > .checkbox > i{
 							opacity: 0;
 						}
@@ -843,7 +843,7 @@
 						}
 
 						.filter .item .controls .ui-slider .ui-slider-range{
-							background: #01B4E1; 
+							background: #01B4E1;
 						}
 
 						.filter .item .controls .ui-slider .ui-slider-handle{
@@ -852,7 +852,7 @@
 							margin-left: -3px;
 							box-sizing: border-box;
 							padding: 0;
-							
+
 							width: 8px !important;
 							height: 24px !important;
 							background: #D0D1D2;
@@ -974,7 +974,7 @@
 				.product .comments > .wrapper{
 					width: 100%;
 					height: 310px;
-					overflow: hidden; 
+					overflow: hidden;
 				}
 
 				.product .comments > .wrapper > .content {
@@ -1040,7 +1040,7 @@
 				.blog .item .body {
 					box-sizing: border-box;
 					padding: 0 0 25px;
-					background-color: #fff; 
+					background-color: #fff;
 					border: none;
 
 					box-shadow: 0px 4px 2px rgba(31,31,31,0.02);
@@ -1105,13 +1105,13 @@
 						text-align: center;
 
 						opacity: 0;
-						
+
 						-webkit-transition: all 0.3s;
 						-moz-transition: all 0.3s;
 						-ms-transition: all 0.3s;
 						-o-transition: all 0.3s;
 						transition: all 0.3s;
-						
+
 						-webkit-transform: scale(0,0);
 						-moz-transform: scale(0,0);
 						-ms-transform: scale(0,0);
@@ -1121,7 +1121,7 @@
 
 					.blog .item:hover a.view{
 						opacity: 1;
-						
+
 						-webkit-transform: scale(1,1);
 						-moz-transform: scale(1,1);
 						-ms-transform: scale(1,1);
@@ -1328,7 +1328,7 @@
 				.modal#Modal-Gallery{
 					background-color: rgba(0,0,0,0.95);
 				}
-				
+
 
 				.modal#Modal-Gallery .modal-dialog .modal-content{
 					background-color: transparent;
@@ -1865,7 +1865,7 @@
 			width: 100%;
 			min-width: 176px;
 			height: auto;
-			max-height: 178px; 
+			max-height: 178px;
 			margin: 0;
 			padding: 0;
 			background-color: #fff;
@@ -1894,7 +1894,7 @@
 			font-weight: normal;
 			line-height: 14px;
 			letter-spacing: 0em;
-			color: #555;			
+			color: #555;
 			text-transform: none;
 			text-align: left;
 
@@ -2219,7 +2219,7 @@
 			line-height: 33px;
 			letter-spacing: 0.05em;
 		}
-		
+
 
 		h3, .h3{
 			font-size: 20px;
@@ -2239,7 +2239,7 @@
 			letter-spacing: 0.05em;
 		}
 
-		
+
 		h5, .h5{
 			font-size: 16px;
 			font-style: normal;
@@ -2523,13 +2523,13 @@
 						text-align: center;
 
 						opacity: 0;
-						
+
 						-webkit-transition: all 0.3s;
 						-moz-transition: all 0.3s;
 						-ms-transition: all 0.3s;
 						-o-transition: all 0.3s;
 						transition: all 0.3s;
-						
+
 						-webkit-transform: scale(0,0);
 						-moz-transform: scale(0,0);
 						-ms-transform: scale(0,0);
@@ -3029,7 +3029,7 @@
 
 /* Helper classes */
 	.container-fluid { margin-right: -15px; margin-left: -15px; }
-	
+
 	.align-center{ text-align: center; }
 	.align-right{ text-align: right; }
 	.align-left{ text-align: left; }

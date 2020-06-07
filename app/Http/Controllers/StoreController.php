@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Services\ProductService;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class StoreController extends Controller
 {
     protected $homeService;
 

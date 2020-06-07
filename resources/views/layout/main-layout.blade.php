@@ -14,6 +14,7 @@
     <link href="{{asset('assets/css/carousel.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/carousel-product.css')}}" rel="stylesheet">
     <link href="{{asset('assets/ionicons-2.0.1/css/ionicons.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/bag.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link href='https://fonts.googleapis.com/css?family=Catamaran:400,100,300' rel='stylesheet' type='text/css'>
 
@@ -23,7 +24,10 @@
     <title>LStore</title>
 </head>
 <body>
+@include('sweetalert::alert')
+
 @include('home.shopping-cart')
+
 
 <div class="toplinks">
     @if(\Illuminate\Support\Facades\Auth::check())
@@ -37,6 +41,9 @@
     @endif
     <a href="./favorites/"> <i class="ion-ios-heart"></i> Favorites </a>
     <a href="tel:+80005554465" class="hidden-xs"> <i class="ion-android-call"></i> 0943-294-292 </a>
+    <a href="{{route('cart.content')}}" class="hidden-xs">
+        <i class="ion-bag" id="my-bag"></i>
+        Cart(<span id="cartCount">{{\Gloudemans\Shoppingcart\Facades\Cart::count()}}</span>) </a>
 </div>
 @include('home.core.nav')
 
@@ -46,6 +53,8 @@
 
 @yield('product')
 
+@yield('cart-content')
+
 @include('home.core.footer')
 
 @include('login')
@@ -53,18 +62,24 @@
 
 
 @notify_render
+<script type="text/javascript" src="//code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="{{asset('assets/js/jquery-latest.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/jquery-latest.min.js')}}"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/core.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/store.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/carousel.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/checkout.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/carousel-product.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/flyto.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/jquery.touchSwipe.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/custom-scroll/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/jquery-ui-1.11.4.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/jquery.ui.touch-punch.js')}}"></script>
+
 </body>
 </html>

@@ -17,9 +17,15 @@ Route::get('/', function () {
     return redirect('home-page');
 });
 
-Route::get('home-page', 'HomeController@index')->name('index');
-Route::get('store', 'HomeController@showStore')->name('store');
-Route::get('{id}/detail', 'HomeController@productDetail')->name('detail');
+Route::get('home-page', 'StoreController@index')->name('index');
+Route::get('store', 'StoreController@showStore')->name('store');
+Route::get('{id}/detail', 'StoreController@productDetail')->name('detail');
+Route::get('{id}/add-product', 'CartController@add')->name('cart.add');
+Route::get('{id}/update-productPlus', 'CartController@updatePlus')->name('cart.update.plus');
+Route::get('{id}/update-productMinus', 'CartController@updateMinus')->name('cart.update.minus');
+Route::get('{id}/remove-product', 'CartController@remove')->name('cart.remove');
+Route::get('cart-content','CartController@showCart')->name('cart.content');
+
 
 Route::get('login', 'LoginController@showFormLogin')->name('login');
 Route::post('login', 'LoginController@login');

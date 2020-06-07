@@ -33,6 +33,7 @@
                         <li><a href="./blog/item-video.html">Article Video</a></li>
                     </ul>
                 </li>
+{{--                <li><a href="#"><i class="cart-fly"></i> Contacts</a></li>--}}
             </ul>
         </div><!--/.nav-collapse -->
 

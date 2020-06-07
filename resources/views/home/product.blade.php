@@ -1,5 +1,8 @@
 @extends('layout.main-layout')
 @section('product')
+    <hr class="offset-lg">
+    <hr class="offset-lg">
+    <hr class="offset-lg hidden-xs">
     <section class="product">
         <div class="container">
             <div class="row">
@@ -66,7 +69,7 @@
                         <p class="price">${{$product->price}}</p>
                         <hr class="offset-md">
 
-                        <button class="btn btn-primary rounded"> <i class="ion-bag"></i> Add to cart</button>
+                        <a class="btn btn-primary rounded" href="{{route('cart.add', $product->id)}}"> <i class="ion-bag"></i> Add to cart</a>
                         <button class="btn btn-link"> <i class="ion-ios-heart"></i> See later </button>
                     </div>
                 </div>
@@ -202,5 +205,6 @@
         </div>
     </section>
     <hr class="offset-lg">
+    <hr class="offset-sm">
     @include('home.relate-product')
 @endsection
