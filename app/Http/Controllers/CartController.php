@@ -35,6 +35,7 @@ class CartController extends Controller
             [
                 'status' => 'success',
                 'totalItem' => Cart::count(),
+                'listItem' => Cart::content()
             ]);
     }
 

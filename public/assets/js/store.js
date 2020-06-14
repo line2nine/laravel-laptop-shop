@@ -113,6 +113,7 @@ $(document).ready(function(){
                         if (result.status == 'success') {
                             $('#product-'+productId).fadeOut('300');
                             $('#cartCount').html(result.totalItem);
+                            $('#bagCount').html(result.totalItem);
                         }
                     }
                 })
@@ -131,6 +132,8 @@ $(document).ready(function(){
                     success: function (result) {
                         if (result.status == 'success'){
                             $('#qtyid-'+productId).val( parseInt($('#qtyid-'+productId).parents('.input-group').find('input').val()) + 1 );
+                            $('#bagCount').html(result.totalItem);
+                            $('#cartCount').html(result.totalItem);
                         }
                     }
                 })
@@ -149,6 +152,8 @@ $(document).ready(function(){
                         if (result.status == 'success') {
                             if( parseInt($('#qtyid-'+productId).parents('.input-group').find('input').val()) > 1 ) {
                                 $('#qtyid-'+productId).val( parseInt($('#qtyid-'+productId).parents('.input-group').find('input').val()) - 1 );
+                                $('#bagCount').html(result.totalItem);
+                                $('#cartCount').html(result.totalItem);
                             }
                         }
                     }
@@ -209,6 +214,36 @@ $(document).ready(function(){
                         });
                         $('#cartCount').html(result.totalItem);
                         $('#bagCount').html(result.totalItem);
+                        var listItem = '';
+                        $.each( result.listItem, function( key, value ) {
+                            listItem += '<div class="media" id="product-'+value.rowId+'">\n' +
+                                '                <div class="media-left">\n' +
+                                '                    <a href="#">\n' +
+                                '                        <img class="media-object" src="/storage/'+value.options.image+'" alt="HP Chromebook 11"/>\n' +
+                                '                    </a>\n' +
+                                '                </div>\n' +
+                                '                <div class="media-body">\n' +
+                                '                    <h4 class="media-heading">'+value.name+'</h4>\n' +
+                                '                    <label>'+value.options.category+'</label>\n' +
+                                '                    <p class="price">'+value.price+'</p>\n' +
+                                '                </div>\n' +
+                                '                <div class="controls">\n' +
+                                '                    <div class="input-group">\n' +
+                                '                <span class="input-group-btn">\n' +
+                                '                  <button class="btn btn-default btn-sm" type="button" data-action="minus" data-id="'+value.rowId+'"><i class="ion-minus-round"></i></button>\n' +
+                                '                </span>\n' +
+                                '                        <input id="qtyid-'+value.rowId+'" data-qty="'+value.qty+'" type="text" class="form-control input-sm" placeholder="Qty" value="'+value.qty+'" readonly="">\n' +
+                                '                        <span class="input-group-btn">\n' +
+                                '                  <button class="btn btn-default btn-sm" type="button" data-action="plus" data-id="'+value.rowId+'"><i class="ion-plus-round"></i></button>\n' +
+                                '                </span>\n' +
+                                '                    </div><!-- /input-group -->\n' +
+                                '\n' +
+                                '                    <a href="#remove" data-id="'+value.rowId+'"> <i class="ion-trash-b"></i> Remove </a>\n' +
+                                '                </div>\n' +
+                                '            </div>\n' +
+                                '            '
+                        });
+                        $(".window .content").html(listItem);
                     }
                 }
             }

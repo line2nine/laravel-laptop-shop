@@ -70,6 +70,3 @@ Route::middleware(['auth', 'check.role'])->group(function () {
         });
     });
 });
-
-
-

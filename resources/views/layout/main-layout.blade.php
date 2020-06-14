@@ -26,6 +26,8 @@
 <body>
 @include('sweetalert::alert')
 
+@include('home.shopping-cart')
+
 
 <div class="toplinks">
     @if(\Illuminate\Support\Facades\Auth::check())
